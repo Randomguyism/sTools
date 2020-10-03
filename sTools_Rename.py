@@ -65,18 +65,6 @@ class RenameUI():
 			)
 		cmds.separator(style = 'none', height = self.spacing[2])
 
-		# Search and Replace Tool
-		sUtil.toolTitle(label = 'Search and Replace', ann = 'Replace Names Tool', spacing = self.spacing)
-		cmds.text(label = 'WIP')
-		cmds.separator(style = 'none', height = self.spacing[0])
-		cmds.button(
-			label = 'Placeholder', 
-			ann = 'Placeholder button', 
-			width = self.buttonWidth, 
-			command = sUtil.test
-			)
-		cmds.separator(style = 'none', height = self.spacing[2])
-
 	def addPrefixSuffixButton(self, textField, fieldType, checkBox, *args):
 		# Queries text entered into UI and underscore checkbox state
 		data = cmds.textFieldGrp(textField, query = True, text = True)
