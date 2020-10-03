@@ -7,26 +7,28 @@ import sTools_Rename as sRename
 import sTools_Joint_Functions as sJoint
 import sTools_Controls as sControl
 import sTools_Attributes as sAttributes
-import sTools_Rig_Functions as sRig
 
 reload(sRename)
 reload(sJoint)
 reload(sControl)
 reload(sAttributes)
-reload(sRig)
 
 class UI(object):
 	def __init__(self):
-		self.winName = 'sTools'							# Window variables
+		# Window variables
+		self.winName = 'sTools'
 		self.winTitle = 'sTools Window'
-		self.defaultFontSize = 14						# Set this to scale window to the font size of maya
+		# Set this to scale window to the font size of maya
+		self.defaultFontSize = 14
 		self.winWidth = self.defaultFontSize * 30
 		self.winHeight = self.defaultFontSize * 65
 	
-		if cmds.window(self.winName, exists = True):	# Delete window if it already exists
+		# Delete window if it already exists
+		if cmds.window(self.winName, exists = True):
 			cmds.deleteUI(self.winName)
 
-		self.buildUI()									# Build the window
+		# Build the window
+		self.buildUI()
 
 	def buildUI(self, *args):
 		self.mainWin = cmds.window(self.winName, width = self.winWidth, height = self.winHeight, title = self.winTitle, sizeable = False)
@@ -92,9 +94,6 @@ class UI(object):
 		# Tab 4 - Attribute Tools
 		sAttributes.AttributesUI(**tab_kwargs)
 
-		# Tab 5 - Rig Tools
-		sRig.RigFunctionsUI(**tab_kwargs)
-
 		# Notes Section
 		self.notes = cmds.columnLayout(parent = pane)
 		cmds.text(label = 'Notes')
@@ -111,19 +110,24 @@ class UI(object):
 		cmds.showWindow(self.winName)
 		cmds.window(self.winName, edit = True, width = self.winWidth, height = self.winHeight)
 
-	def setNotesHeight(self, field, *args):										# This function checks the height of the notes field
+	def setNotesHeight(self, field, *args):
+		# This function checks the height of the notes field
 		lineNumber = cmds.scrollField(field, query = True, numberOfLines = True)
 		currentHeight = cmds.scrollField(field, query = True, height = True)
 	
-		if lineNumber < 10:														# Sets height to minimum if not enough lines
+		if lineNumber < 10:
+			# Sets height to minimum if not enough lines
 			cmds.scrollField(field, edit = True, height = 11 * self.defaultFontSize)
-		elif lineNumber >= 25:													# Sets height to maximum if too many lines
+		elif lineNumber >= 25:
+			# Sets height to maximum if too many lines
 			cmds.scrollField(field, edit = True, height = 26 * self.defaultFontSize)
-		else:																	# Sets height to just the right height for number of lines
+		else:
+			# Sets height to just the right height for number of lines
 			newHeight = (lineNumber + 1) * self.defaultFontSize
 			cmds.scrollField(field, edit = True, height = newHeight)
 
 	def errorButton(*args):
+		# Chooses a random string from list to input in error command pointless but fun
 		errorList = [
 			"><>",
 			"cuttlefish",
@@ -135,5 +139,5 @@ class UI(object):
 			"cannot concatenate 'cuttlefish' and '><>' objects",
 			"'><>' object has no attribute 'cuttlefish'"
 			]
-		randomError = random.choice(errorList)				# Chooses a random string from list to input in error command
-		cmds.error(randomError)								# pointless but fun
+		randomError = random.choice(errorList)
+		cmds.error(randomError)
