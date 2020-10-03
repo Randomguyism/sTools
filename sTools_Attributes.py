@@ -112,18 +112,6 @@ class AttributesUI():
 		cmds.setParent('..')
 		cmds.separator(style = 'none', height = self.spacing[2])
 
-		# Add Common Attributes Tool
-		sUtil.toolTitle(label = 'Add Attributes', ann = 'Common Attributes Tool', spacing = self.spacing)
-		cmds.text(label = 'WIP')
-		cmds.separator(style = 'none', height = self.spacing[0])
-		cmds.button(
-			label = 'Placeholder', 
-			ann = 'Placeholder button', 
-			width = self.buttonWidth, 
-			command = sUtil.test
-			)
-		cmds.separator(style = 'none', height = self.spacing[2])
-
 	def axisCheckBoxes(self, checkBoxGrp, *args):
 		checkBoxes = cmds.checkBoxGrp(checkBoxGrp, query = True, valueArray4 = True)
 
