@@ -45,18 +45,6 @@ class JointsUI():
 			command = partial(self.jointSpliterButton, self.jointNum, self.jointAxis))
 		cmds.separator(style = 'none', height = self.spacing[2])
 
-		# Quick Joint Orient
-		sUtil.toolTitle(label = 'Joint Orient', ann = 'Joint Orient Tool', spacing = self.spacing)
-		cmds.text(label = 'WIP')
-		cmds.separator(style = 'none', height = self.spacing[0])
-		cmds.button(
-			label = 'Placeholder', 
-			ann = 'Placeholder button', 
-			width = self.buttonWidth, 
-			command = sUtil.test
-			)
-		cmds.separator(style = 'none', height = self.spacing[2])
-
 	def jointSpliterButton(self, jointNumber, xyz, *args):
 		# Finds the requested number of joints to insert
 		jointNum = cmds.intSliderGrp(jointNumber, query = True, value = True)
