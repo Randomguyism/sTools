@@ -98,7 +98,7 @@ class UI(object):
 		self.notes = cmds.columnLayout(parent = pane)
 		cmds.text(label = 'Notes')
 		self.notesField = cmds.scrollField(editable = True, wordWrap = True, width = self.winWidth, height = 11 * self.defaultFontSize, 
-			text = '''To do: Add attributes, Lock and hide, FKIK joint mirroring, Control shape library.''')
+			text = '><>')
 		cmds.scrollField(self.notesField, edit = True, changeCommand = partial(self.setNotesHeight, self.notesField))
 				
 		# Helpline Footer
