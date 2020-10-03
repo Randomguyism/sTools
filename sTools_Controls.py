@@ -56,17 +56,6 @@ class ControlsUI():
 			)
 		cmds.separator(style = 'none', height = self.spacing[2])
 
-		sUtil.toolTitle(label = 'Control Shape Library', ann = 'Control Shape Library', spacing = self.spacing)
-		cmds.text(label = 'WIP')
-		cmds.separator(style = 'none', height = self.spacing[0])
-		cmds.button(
-			label = 'Placeholder', 
-			ann = 'Placeholder button', 
-			width = self.buttonWidth, 
-			command = sUtil.test
-			)
-		cmds.separator(style = 'none', height = self.spacing[2])
-
 	def createControlsButton(self, conType, axis, radius, *args):
 		constraintType = cmds.radioButtonGrp(conType, query = True, select = True)
 		controlAxis = cmds.radioButtonGrp(axis, query = True, select = True)
